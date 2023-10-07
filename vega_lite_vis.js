@@ -1,4 +1,9 @@
-var vg_1 = "daily_cost_bar_chart.vg.json";
-vegaEmbed("#bar_chart", vg_1).then(function(result) {
-    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+var vg_1 = "chloropleth_map.vg.json";
+vegaEmbed("#chloro_map", vg_1, {"actions": false}).then(function(result) {
+
+}).catch(console.error);
+
+var vg_2 = "radial_chart.vg.json";
+vegaEmbed("#radial_chart", vg_2, {"actions": false}).then(function(result) {
+
 }).catch(console.error);

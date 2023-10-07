@@ -1,0 +1,52 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A simple radial chart with embedded data.",
+  "width":400,
+  "height":300,
+  "params" :[
+    { "name": "Slider",
+      "value": 160,
+      "bind":{
+        "input": "range",
+        "min": 1,
+        "max": 160,
+        "step": 1,
+        "name": "Maximum Happiness Rank"
+        }
+    }
+  ],
+  "data": {
+    "url": "2015.csv"
+  },
+  
+  "layer": [{
+    
+    "mark": {"type": "arc", "innerRadius": 50, "stroke": "#fff"}
+   
+  },
+  {
+    "mark": {"type": "text", "radiusOffset": 10},
+    "encoding": {
+      "text": {"field": "NumberOfCountries", "type": "quantitative"}
+    }
+  }],
+  "transform": [
+    {"filter":"datum.Rank<=Slider"},
+    {
+      "aggregate": [{"op": "count", "as": "NumberOfCountries"},
+                    {"op":"average","field": "Health (Life Expectancy)","as":"Average Life"}]
+                    , "groupby": ["Region"]
+                    }
+  ],
+  "encoding": {
+    "theta": {  "field": "NumberOfCountries", 
+                "type": "quantitative", 
+                "stack": true},
+    "radius": {"field": "NumberOfCountries", "scale": {"type": "sqrt", "zero": true, "rangeMin": 60}},
+    "order": {"field": "NumberOfCountries", "type": "quantitative", "sort": "ascending"},
+    "color": {"field": "Region", "type": "nominal", "legend": null},
+    "tooltip":[ {"field":"NumberOfCountries", "type": "quantitative", "title":"Number of Countries"},
+                {"field":"Region","type": "nominal"},
+                {"field":"Average Life","title":"Average Life Expectancy","type": "quantitative","format":".5f"}]
+  }
+}
