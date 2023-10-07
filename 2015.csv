@@ -1,4 +1,4 @@
-Country,Region,Happiness Rank,Happiness Score,Standard Error,Economy (GDP per Capita),Family,Health (Life Expectancy),Freedom,Trust (Government Corruption),Generosity,Dystopia Residual
+Country,Region,Rank,Happiness Score,Standard Error,Economy (GDP per Capita),Family,Health (Life Expectancy),Freedom,Trust (Government Corruption),Generosity,Dystopia Residual
 Switzerland,Western Europe,1,7.587,0.03411,1.39651,1.34951,0.94143,0.66557,0.41978,0.29678,2.51738
 Iceland,Western Europe,2,7.561,0.04884,1.30232,1.40223,0.94784,0.62877,0.14145,0.4363,2.70201
 Denmark,Western Europe,3,7.527,0.03328,1.32548,1.36058,0.87464,0.64938,0.48357,0.34139,2.49204
@@ -134,7 +134,7 @@ Sri Lanka,Southern Asia,132,4.271,0.03751,0.83524,1.01905,0.70806,0.53726,0.0917
 Cameroon,Sub-Saharan Africa,133,4.252,0.04678,0.4225,0.88767,0.23402,0.49309,0.05786,0.20618,1.95071
 Bulgaria,Central and Eastern Europe,134,4.218,0.04828,1.01216,1.10614,0.76649,0.30587,0.00872,0.11921,0.89991
 Egypt,Middle East and Northern Africa,135,4.194,0.0326,0.8818,0.747,0.61712,0.17288,0.06324,0.11291,1.59927
-Yemen,Middle East and Northern Africa,136,4.077,0.04367,0.54649,0.68093,0.40064,0.35571,0.07854,0.09131,1.92313
+Egypt,Middle East and Northern Africa,136,4.077,0.04367,0.54649,0.68093,0.40064,0.35571,0.07854,0.09131,1.92313
 Angola,Sub-Saharan Africa,137,4.033,0.04758,0.75778,0.8604,0.16683,0.10384,0.07122,0.12344,1.94939
 Mali,Sub-Saharan Africa,138,3.995,0.05602,0.26074,1.03526,0.20583,0.38857,0.12352,0.18798,1.79293
 Congo (Brazzaville),Sub-Saharan Africa,139,3.989,0.06682,0.67866,0.6629,0.31051,0.41466,0.11686,0.12388,1.68135
