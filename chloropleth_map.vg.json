@@ -35,10 +35,10 @@
                 "url": "2015.csv"
               },
               "key": "Country",
-              "fields": ["Happiness Score", "Happiness Rank", "Economy (GDP per Capita)"]
+              "fields": ["Happiness Score", "Rank", "Economy (GDP per Capita)"]
             }
             ,
-          "default": {"Happiness Score": 0, "Happiness Rank": 0, "Economy (GDP per Capita)": 0}
+          "default": {"Happiness Score": 0, "Rank": 0, "Economy (GDP per Capita)": 0}
           }
         ],
         "mark": {"type": "geoshape"},
