@@ -1,0 +1,11 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A bubbleplot showing horsepower on x, miles per gallons on y, and binned acceleration on size.",
+  "data": {"url": "2015.csv"},
+  "mark": "point",
+  "encoding": {
+    "x": {"field": "Freedom", "type": "quantitative"},
+    "y": {"field": "Health", "type": "quantitative"},
+    "size": {"field": "GDP", "type": "quantitative"}
+  }
+}
