@@ -1,0 +1,34 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "2015.csv"},
+  "transform": [{
+    "fold": ["GDP", "Family", "Health", "Freedom", "Trust", "Generosity","Dystopia"],
+    "as": ["Variable","Value"]
+  },
+
+{
+  "filter": "(datum.Rank <= 10)"
+}],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "Country",
+      "type": "nominal",
+      "sort":{"field":"Rank"}
+    },
+    "y": {
+      "stack":"zero",
+      "field": "Value",
+      "type": "quantitative"
+    },
+    "color": {
+      "field": "Variable",
+      "type": "nominal",
+      "scale": {
+        "domain": ["GDP","Family","Health","Freedom","Trust","Generosity","Dystopia"],
+        "range": ["#e7ba52", "#c7c7c7", "#aec7e8", "#1f77b4", "#9467bd","#155392"]
+      },
+      "title": "Value type"
+    }
+  }
+}
