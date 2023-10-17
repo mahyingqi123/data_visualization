@@ -1,0 +1,80 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Stock prices of 5 Tech Companies over Time.",
+  "width":"container",
+  "height":"container",
+  "params":[
+    {
+      "name":"select",
+      "value":"Denmark",
+      "bind":{
+        "input":"select",
+        "options":["Chad","Afghanistan","Switzerland","Iceland","Denmark","Norway","Canada",
+                  "Finland","Netherlands","Sweden","New Zealand","Australia","Israel",
+                  "Costa Rica","Austria","Mexico","United States","Brazil","Luxembourg",
+                  "Ireland","Belgium","United Arab Emirates","United Kingdom","Oman",
+                  "Venezuela","Singapore","Panama","Germany","Chile","Qatar","France",
+                  "Argentina","Czech Republic","Uruguay","Colombia","Thailand","Saudi Arabia",
+                  "Spain","Malta","Taiwan","Kuwait","Suriname","Trinidad and Tobago",
+                  "El Salvador","Guatemala","Uzbekistan","Slovakia","Japan","South Korea",
+                  "Ecuador","Bahrain","Italy","Bolivia","Moldova","Paraguay","Kazakhstan",
+                  "Slovenia","Lithuania","Nicaragua","Peru","Belarus","Poland","Malaysia",
+                  "Croatia","Libya","Russia","Jamaica","North Cyprus","Cyprus","Algeria",
+                  "Kosovo","Turkmenistan","Mauritius","Hong Kong","Estonia","Indonesia",
+                  "Vietnam","Turkey","Kyrgyzstan","Nigeria","Bhutan","Azerbaijan","Pakistan",
+                  "Jordan","Montenegro","China","Zambia","Romania","Serbia","Portugal",
+                  "Latvia","Philippines","Somaliland region","Morocco","Macedonia","Mozambique",
+                  "Albania","Bosnia and Herzegovina","Lesotho","Dominican Republic","Laos",
+                  "Mongolia","Swaziland","Greece","Lebanon","Hungary","Honduras","Tajikistan",
+                  "Tunisia","Palestinian Territories","Bangladesh","Iran","Ukraine",
+                  "Iraq","South Africa","Ghana","Zimbabwe","Liberia","India","Sudan","Haiti",
+                  "Congo (Kinshasa)","Nepal","Ethiopia","Sierra Leone","Mauritania","Kenya",
+                  "Djibouti","Armenia","Botswana","Myanmar","Georgia","Malawi","Sri Lanka",
+                  "Cameroon","Bulgaria","Egypt","Yemen","Angola","Mali","Congo (Brazzaville)",
+                  "Comoros","Uganda","Senegal","Gabon","Niger","Cambodia","Tanzania",
+                  "Madagascar","Central African Republic","Chad","Guinea","Ivory Coast",
+                  "Burkina Faso","Afghanistan","Rwanda","Benin","Syria","Burundi","Togo"
+        ],
+        "name":"Select Country:"
+      }
+    }
+  ],
+  
+  "data": {"url": "data.csv"},
+  "transform":[
+    {
+      "filter":"datum.Country == select"
+    },
+
+      {
+        "fold": ["GDP per Capita","Social Support","Life Expectancy","Trust in Government","Freedom to Make Choices","Generosity of People"],
+        "as": ["Indicator", "value"]
+      }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "line","size":4},
+      "encoding": {
+        "x": {"field": "Year", "type": "temporal","timeUnit":"year","axis":{"tickCount":"year"},"title":"Year"},
+        "y": {"field": "value", "type": "quantitative"},
+        "color": {"field": "Indicator", "type": "nominal"},
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "Year", "type": "temporal","timeUnit":"year"},
+          {"field": "Indicator", "type": "nominal"},
+          {"field": "value", "type": "quantitative", "format":".2f"}
+        ]
+      }
+    }
+    ]
+,
+      "config": {
+        "axis": {"labelFont": "serif","titleFont":"serif","labelFontSize":15,"titleFontSize":15},
+        "legend": {
+          "labelFont": "serif",
+          "titleFont": "serif","labelFontSize":10,"titleFontSize":10,
+          "labelBaseline":"alphabetic"
+        }
+      }
+    
+}

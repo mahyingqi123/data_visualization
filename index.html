@@ -8,29 +8,127 @@
 <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
 <script src="vega_lite_vis.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
 <link rel="stylesheet" href="styles.css">
-<title>First Vega-Lite graph </title>
+<title>World Happiness Report</title>
 </head>
 <body>
-<h1>FIT3179 Data Visualization 2</h1>
-<div class="pure-g row1">
-    <div class="pure-u-1-1">
-        <div id="chloro_map"></div>
-    </div>
-    </div>
-<div class="pure-g row1">
-    <div class="pure-u-1-2">Number Of Countries in Each Region<br>
-    <div  id="radial_chart"></div></div>
-    <div class="pure-u-1-2" ><br>
-    <div id="heatmap"></div></div>
+
+<div class="outer-frame ">
+<h1 style="font-family: 'Prata', serif; font-size: 62px;">World Happiness Statistics</h1>
+<div class="row2">
+    <h3 style=" margin-bottom: 15px;">Introduction</h3><p>
+    The <b>World Happiness Report</b> is a publication that is 
+    published annually by Sustainable Development Solutions Network, 
+    powered by the Gallup World Poll data. It shows a ranking of countries by their happiness score, 
+    which is determined by a number of factors. The factors are <b>GDP per capita</b>, 
+    <b>social support</b>, <b>healthy life expectancy</b>, <b>freedom</b>, <b>generosity</b>, and <b>corruption</b>.
+    In order to understand the factors that affect the happiness score, I have created a visualization that shows the relationship between different factors and the happiness score. Let's take a look at the visualization below.</p>
 </div>
+<div class="pure-g map">
+    <h3> Happiness Score in Each Country </h3>
+    <br>
+    <div id="chloro_map"></div>
+    <br>
+            <p style="text-align: center;"><i>Figure 1 shows happiness score of countries</i></p>
+    </div>
+    <div class="row2"><p>
+        From figure 1 we can see that happiness score around <b>South America, West America, Oceania and Europe</b> are generally higher.
+    For <b>Asia and Africa</b>, happines score for both of them are generally lower than other continents.
+Across the year from 2015 to 2019, we can observe that the happiness score for all of the countries has been dropping.</p></div>
+<div>
+    <div class="pure-g row1">
+    
+        <div class="pure-u-1-2 chart_container" ><br>
+            <div id="plot" class="halfchart" style="margin-bottom: 30px;"></div><br>
+            <p style="text-align: center;"><i>Figure 2 shows scores of each attribute over the year</i></p>
+
+        </div>
+        <div class="pure-u-1-2">
+        <div class="textbox"
+        style=" margin-left: 30px; margin-right: 30px;">
+            <h3 style="margin-bottom: 15px;">Trends of Scores by Country</h3><p>
+            For scores of each aspect for Denmark, family, health and freedom are the top 3 highest scores.
+            Generosity and corruption are the lowest scores. The high score attributes indicates that the country is doing well in that aspect.
+            By switching to Afghanistan, we can see that the scores for each aspect are generally lower than Denmark.
+            For Afghanistan, the lowest score attributes are family, health and freedom. The high score attributes are generosity and corruption.
+            </p>
+        </div></div>
+    </div>
+</div>
+
+<div class="pure-g row1 white" style="height: fit-content;" >
+    <div class="pure-u-1-1 chart_container" style="height: fit-content;" >
+        <h3>Correlation Betwwen Aspects</h3><br>
+        <div  id="stacked_bar" class="fullchart" style="margin-bottom: 30px; height: 400px;"></div>
+        <br>
+            <p style="text-align: center;"><i>Figure 3 shows a bubble plot encoding 4 attributes</i></p>
+    <div></div></div>
+</div>
+
+<div class="row2"><p>
+    According to figure 3, we can observe that <b>high generosity of people and trust in government</b> usually correlates with with <b>more freedom to make choices</b> for a country.
+    And <b>high GDP per Capita</b> usually correlates with <b>higher trust in government and generosity of people </b> for a country.
+    We can deduce that the more generous the people are, the more trust they have in the government. And the more trust they have in the government, the more freedom they have.
+
+
+</p></div>
+
+
 <div class="pure-g row1">
-    <div class="pure-u-1-2">Number Of Countries in Each Region<br>
-    <div  id="stacked_bar"></div></div>
-    <div class="pure-u-1-2" >World Happiness Scores<br>
-    <div id="bubble_plot"></div></div>
+    <div class="pure-u-1-2">
+        <div class="textbox" >
+
+        <h3 style="margin-bottom: 10px;">Relation Between Health, GDP and Freedom</h3><p style=" margin-left: 30px; margin-right: 30px;">
+        Based on figure 4, we can see that there is a positive correlation between health and GDP and freedom.
+        As the freedom and GDP increases, the health score also increases. This indicates that a country with more freedom and higher GDP is able to provide better healthcare for its citizens.
+        Hence, we can deduce that greater freedom and GDP will lead to a healthier life.
+
+    </p></div></div>
+    <div class="pure-u-1-2 chart_container" ><br>
+        <div id="heatmap" class="halfchart"></div>
+        <br>
+            <p style="text-align: center;"><i>Figure 4 shows scores of each attribute over the year</i></p>
+    </div>
+</div>
+<div>
+
+</div>
+
+
+
+
+
+
+    <div class="pure-g row1">
+    <div class="pure-u-1-1 chart_container" >
+        <h3>World Happiness Ranking Over The Years</h3><br>
+        <div id="bubble_plot" class="halfchart">
+        </div>
+        <br>
+            <p style="text-align: center;"><i>Figure 5 shows scores of each attribute over the year</i></p>
+    </div>
+
+   
+</div>
+<div class="row2">
+    <h3 style="margin-bottom: 10px;">Conclusion</h3><p>
+        In conclusion, there are many interesting insights that we can gain from the visualization of the World Happiness Report
+        It is essential for us to know what are the important factors that lead to a happy life.
+    With us knowing the factors that makes people live happily in a country, we shall be able to build a better nation in the future, let Malaysia rise again!  </p>
+</div>
+
+<div class="row2">
+<p style="font-size: 14px;">
+This visualization is created by <b> Mah Ying Qi</b> for the course <b>Data Visualization</b> in <b>Monash University Malaysia</b>
+. The data is sourced from <a href="https://www.kaggle.com/datasets/mathurinache/world-happiness-report">Kaggle</a>.
+</p>
+</div>
+
 </div>
 </body>
 </html>

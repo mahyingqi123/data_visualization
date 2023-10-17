@@ -1,34 +1,67 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "data": {"url": "2015.csv"},
-  "transform": [{
-    "fold": ["GDP", "Family", "Health", "Freedom", "Trust", "Generosity","Dystopia"],
-    "as": ["Variable","Value"]
-  },
-
-{
-  "filter": "(datum.Rank <= 10)"
-}],
-  "mark": "bar",
+    "width": "container","height": "container",
+  "data": {
+    "url": "data.csv"
+  },"transform": [
+    {
+    "aggregate": [{
+      "op": "mean",
+      "field": "GDP per Capita",
+      "as": "GDP per Capita"
+    },
+    {
+      "op": "mean",
+      "field": "Generosity of People",
+      "as": "Generosity of People"
+    },
+    {
+      "op": "mean",
+      "field": "Freedom to Make Choices",
+      "as": "Freedom to Make Choices"
+    },{
+      "op": "mean",
+      "field": "Trust in Government",
+      "as": "Trust in Government"
+    }],
+    "groupby": ["Country"]
+  }],
+  "params": [{
+    "name": "view",
+    "select": "interval",
+    "bind": "scales"
+  }],
+  "mark": "circle",
   "encoding": {
-    "x": {
-      "field": "Country",
-      "type": "nominal",
-      "sort":{"field":"Rank"}
-    },
     "y": {
-      "stack":"zero",
-      "field": "Value",
-      "type": "quantitative"
+      "field": "Generosity of People",
+      "type": "quantitative",
+      "scale":{"zero":false}
     },
-    "color": {
-      "field": "Variable",
-      "type": "nominal",
-      "scale": {
-        "domain": ["GDP","Family","Health","Freedom","Trust","Generosity","Dystopia"],
-        "range": ["#e7ba52", "#c7c7c7", "#aec7e8", "#1f77b4", "#9467bd","#155392"]
-      },
-      "title": "Value type"
+    "x": {
+      "field": "Trust in Government",
+      "type": "quantitative",
+      "scale":{"zero":false}
+    },
+    "size": {"field": "GDP per Capita", "type": "quantitative"},
+    "color": {"field":"Freedom to Make Choices", "type": "quantitative"},
+    "tooltip": [
+      {"field": "Country", "type": "nominal"},
+      {"field": "Generosity of People", "type": "quantitative","format":".3f"},
+      {"field": "GDP per Capita", "type": "quantitative","format":".3f"},
+      {"field": "Freedom to Make Choices", "type": "quantitative","format":".3f"},
+      {"field": "Trust in Government", "type": "quantitative","format":".3f"}
+    ]
+  },
+  "config": {
+    "view": {
+        "stroke": null
     }
-  }
+,
+        "axis": {"labelFont": "serif","titleFont":"serif","labelFontSize":15,"titleFontSize":15},
+        "legend": {
+          "labelFont": "serif",
+          "titleFont": "serif","labelFontSize":15,"titleFontSize":15
+        }
+      }
 }
