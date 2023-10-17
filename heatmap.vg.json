@@ -1,27 +1,77 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "data": {"url": "2015.csv"},
+  "width":"container",
+  "height":"container",
+  "data": {"url": "data.csv"},
   "transform": [
     {"bin":true,
-  "field": "Family",
-  "as":"Binned Family"},
+  "field": "Social Support",
+  "as":"Social Support"},
   {"bin":true,
-  "field": "Generosity",
-  "as":"Binned Generosity"}
+  "field": "GDP per Capita",
+  "as":"GDP per Capita"},
+  {
+    "calculate": "'As Freedom and GDP increases,= the Life Expectancy increases.'",
+    "as": "multiline"
+},
+{
+    "calculate": "split(datum.multiline, '=')",
+    "as": "trend"
+}
   ],
+  "layer":[
+    {
+      
   "mark": "rect",
   "encoding": {
-    "y": {"field": "Binned Family", "bin":{
+    "y": {"field": "Social Support", 
+    "scale": {"domain": [0,2.0]},
+    "bin":{
       "binned": true,
       "step": 0.2
     }},
-    "x": {"field": "Binned Generosity", "bin":{
+    "x": {"field": "GDP per Capita", 
+    "scale": {"domain": [0, 2.2]},
+    "bin":{
       "binned": true,
       "step": 0.2
     }},
-    "color": {"aggregate":"count","field": "Trust"}
-  },
-  "config": {
-    "axis": {"grid": true, "tickBand": "extent"}
+    "color": {"aggregate":"average","field": "Life Expectancy", "type": "quantitative","scale": {"scheme": "yellowgreenblue"}},
+
+    "tooltip": [
+      {"field": "Freedom", "type": "quantitative"},
+      {"field": "GDP", "type": "quantitative"},
+      {"field": "Health", "type": "quantitative","format":".2f"}
+    ]
   }
+    },
+    {
+      "data":{
+        "values": 
+          {"trend": "As Freedom and GDP\n increases, the Life \nExpectancy increases."}
+      },
+      "mark": {"type": "text", "align":"left","lineBreak":"\n","fontSize":11,"font":"Serif"},
+      "encoding": {
+        "x": {"value": 120},
+        "y": {"value": 170},
+        "text": {"field": "trend"}
+      }
+    }
+    
+  
+  
+  ],
+  "config": {
+    "view": {
+        "stroke": null
+    }
+,
+        "axis": {"labelFont": "serif","titleFont":"serif","labelFontSize":15,"titleFontSize":15},
+        "legend": {
+          "labelFont": "serif",
+          "titleFont": "serif","labelFontSize":10,"titleFontSize":10
+        }
+      
+}
+  
 }

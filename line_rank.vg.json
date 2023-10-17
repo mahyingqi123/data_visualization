@@ -1,0 +1,56 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Stock prices of 5 Tech Companies over Time.",
+  "width":"container",
+  "height":"container",
+  "data": {"url": "data.csv"},
+  "transform": [
+    {
+      "filter":{
+        "field": "Happiness Rank",
+        "lt":10
+      }
+    }
+  ],
+  
+  "layer":[
+    {
+      "mark": {
+        "type": "line",
+        "point": {"filled": true,"size":100},
+        "size": 5
+      },
+      "encoding": {
+        "x": {"timeUnit": "year", "field": "Year","axis":{"tickCount":"year"},"title":"Year"},
+        "y": {"field": "Happiness Rank", "type": "quantitative"},
+        "color": {"field": "Country", "type": "nominal"},
+        "tooltip": [
+          {"field": "Year", "type": "temporal","timeUnit":"year"},
+          {"field": "Happiness Rank", "type": "quantitative"},
+          {"field": "Country", "type": "nominal"},
+          {"field":"Happiness Score","type":"quantitative","format":".2f"}
+        ]
+        
+      }
+      
+    },
+    {
+      "data": {"values": {"trend": "The top ranking countries\nhave been consistent over\nthe years"}},
+      "mark": {"type": "text", "align":"left","lineBreak":"\n","fontSize":13,"font":"Serif"},
+      "encoding": {
+        "x": {"value": 500},
+        "y": {"value": -30},
+        "text": {"field": "trend"}
+      }
+    }
+  ]
+  ,
+      "config": {
+        "axis": {"labelFont": "serif","titleFont":"serif","labelFontSize":15,"titleFontSize":15},
+        "legend": {
+          "labelFont": "serif",
+          "titleFont": "serif","labelFontSize":15,"titleFontSize":15
+        }
+      }
+
+}
