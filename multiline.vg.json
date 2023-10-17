@@ -51,22 +51,45 @@
         "as": ["Indicator", "value"]
       }
   ],
+  "encoding": {
+    "x": {"field": "Year", "type": "temporal","timeUnit":"year","axis":{"tickCount":"year"},"title":"Year"},
+    "y": {"field": "value", "type": "quantitative"},
+    "color": {
+      "condition":{
+        "param": "hover",
+        "field":"Indicator",
+        "type": "nominal"
+      },
+      "value":"grey"
+    },
+    "opacity": {
+      "condition":{
+        "param": "hover",
+        "value":1
+      },
+      "value":0.2
+    },
+    "tooltip": [
+      {"field": "Country", "type": "nominal"},
+      {"field": "Year", "type": "temporal","timeUnit":"year"},
+      {"field": "Indicator", "type": "nominal"},
+      {"field": "value", "type": "quantitative", "format":".2f"}
+    ]
+  
+  },
+
   "layer": [
     {
-      "mark": {"type": "line","size":4},
-      "encoding": {
-        "x": {"field": "Year", "type": "temporal","timeUnit":"year","axis":{"tickCount":"year"},"title":"Year"},
-        "y": {"field": "value", "type": "quantitative"},
-        "color": {"field": "Indicator", "type": "nominal"},
-        "tooltip": [
-          {"field": "Country", "type": "nominal"},
-          {"field": "Year", "type": "temporal","timeUnit":"year"},
-          {"field": "Indicator", "type": "nominal"},
-          {"field": "value", "type": "quantitative", "format":".2f"}
-        ]
-      }
-    }
+      "params": [{
+        "name": "hover",
+        "select": {"type": "point", "fields": ["Indicator"],"on":"mouseover"}
+      }],
+      "mark":{"type": "line","strokeWidth":8,"stroke":"transparent"}
+    },
+    {"mark":"line"}
+
     ]
+
 ,
       "config": {
         "axis": {"labelFont": "serif","titleFont":"serif","labelFontSize":15,"titleFontSize":15},

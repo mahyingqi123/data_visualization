@@ -12,26 +12,52 @@
       }
     }
   ],
-  
+  "encoding": {
+    "x": {"timeUnit": "year", "field": "Year","axis":{"tickCount":"year"},"title":"Year"},
+    "y": {"field": "Happiness Rank", "type": "quantitative"},
+    "color": {"condition": {
+      "param": "hover",
+      "field":"Country",
+      "type":"nominal",
+      "legend": null
+    },
+    "value": "grey"},
+    "opacity": {
+      "condition": {
+        "param": "hover",
+        "value": 1
+      },
+      "value": 0.2
+    
+  },
+    "tooltip": [
+      {"field": "Year", "type": "temporal","timeUnit":"year"},
+      {"field": "Happiness Rank", "type": "quantitative"},
+      {"field": "Country", "type": "nominal"},
+      {"field":"Happiness Score","type":"quantitative","format":".2f"}
+    ]
+   
+  },
   "layer":[
+    {
+
+      "params": [{
+        "name": "hover",
+        "select": {
+          "type": "point",
+          "fields": ["Country"],
+          "on": "mouseover"
+        }
+      }],
+      "mark": {"type": "line", "strokeWidth": 8, "stroke": "transparent"}
+    },
     {
       "mark": {
         "type": "line",
         "point": {"filled": true,"size":100},
         "size": 5
-      },
-      "encoding": {
-        "x": {"timeUnit": "year", "field": "Year","axis":{"tickCount":"year"},"title":"Year"},
-        "y": {"field": "Happiness Rank", "type": "quantitative"},
-        "color": {"field": "Country", "type": "nominal"},
-        "tooltip": [
-          {"field": "Year", "type": "temporal","timeUnit":"year"},
-          {"field": "Happiness Rank", "type": "quantitative"},
-          {"field": "Country", "type": "nominal"},
-          {"field":"Happiness Score","type":"quantitative","format":".2f"}
-        ]
-        
       }
+      
       
     },
     {
@@ -39,8 +65,9 @@
       "mark": {"type": "text", "align":"left","lineBreak":"\n","fontSize":13,"font":"Serif"},
       "encoding": {
         "x": {"value": 500},
-        "y": {"value": -30},
-        "text": {"field": "trend"}
+        "y": {"value": -40},
+        "text": {"field": "trend"},
+        "color":{"value":"black"}
       }
     }
   ]

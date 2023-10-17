@@ -28,7 +28,7 @@ h1 {
 }
 .halfchart {
     width: 100%;
-    height: 85%;
+    height: 280px;
 }
 
 .fullchart {
@@ -47,7 +47,7 @@ h1 {
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
     border-radius: 20px;
     width: 85%;
-    height: 400px;
+    height: "fit-content";
     background-color: white;
     justify-content: center;
 }
