@@ -39,9 +39,9 @@
     "color": {"aggregate":"average","field": "Life Expectancy", "type": "quantitative","scale": {"scheme": "yellowgreenblue"}},
 
     "tooltip": [
-      {"field": "Freedom", "type": "quantitative"},
-      {"field": "GDP", "type": "quantitative"},
-      {"field": "Health", "type": "quantitative","format":".2f"}
+      {"field": "Social Support", "type": "quantitative"},
+      {"field": "GDP per Capita", "type": "quantitative"},
+      {"field": "Life Expectancy", "type": "quantitative","format":".2f"}
     ]
   }
     },
